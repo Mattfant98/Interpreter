@@ -33,5 +33,6 @@ let interpreter (input, output) =
         match (cl, stack) with
             |(ADD::restOfCommands, INT(a)::INT(b)::restOfStack) -> processor restOfCommands (INT(a+b)::restOfStack)
             |(ADD::restOfCommands, stack_) -> ERROR::stack
-
+            |(SUB::restOfCommands, INT(a)::INT(b)::restOfStack) -> processor restOfCommands (INT(a-b)::restOfStack)
+            |(SUB::restOfCommands, stack_) -> ERROR::stack
     in processor comList []
